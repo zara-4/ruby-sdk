@@ -1,6 +1,8 @@
 module Zara4::API::ImageProcessing
   class ProcessedImage
     
+    attr_accessor :request, :request_id, :file_urls, :original_file_size, :compressed_file_size
+    
     
     def initialize(request, request_id, file_urls, original_file_size, compressed_file_size)
       @request              = request

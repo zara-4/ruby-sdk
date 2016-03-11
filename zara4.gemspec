@@ -16,11 +16,6 @@ spec = Gem::Specification.new do |s|
   s.license = 'MIT'
 
   s.add_dependency('json', '~> 1.8')
-  s.add_dependency('httparty', '~> 0.13')
-
-  #s.add_development_dependency('mocha', '~> 0.13.2')
-  #s.add_development_dependency('shoulda', '~> 3.4.0')
-  #s.add_development_dependency('test-unit')
-  #s.add_development_dependency('rake')
+  s.add_dependency('httmultiparty', '~> 0.3.13')
   
 end

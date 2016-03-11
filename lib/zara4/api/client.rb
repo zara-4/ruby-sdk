@@ -1,9 +1,10 @@
 require 'json'
-require 'httparty'
+require 'open-uri'
+require 'httmultiparty'
 
 module Zara4::API
   class Client
-    include HTTParty
+    include HTTMultiParty
     
     attr_accessor :client_id, :client_secret
     
@@ -32,20 +33,23 @@ module Zara4::API
       url = Zara4::API::Communication::Util::url('/v1/image-processing/request')
           
       parameters = image_processing_request.generate_form_data
-      parameters['access_token'] = @access_token.token
       
       headers = {
-        'Content-Type'  => 'application/json'
+        'access_token'  => @access_token.token
       }     
-     
+      
+      print parameters
+      
       response = self.class.post(url, {
-        body: parameters.to_json,
-        headers: headers
+        query: parameters,
+        headers: headers,
+        detect_mime_type: true
       })
+            
       
       # Check for API error response
       if response.has_key?('error')
-        puts 'ERROR IS ' + response.fetch('error')
+        raise 'ERROR IS ' + response.fetch('error')
       end
            
       
@@ -66,10 +70,14 @@ module Zara4::API
     #
     def download_processed_image(processed_image, save_path)
       
-      url = ''
+      url = processed_image.file_urls[0]
       
       if @access_token
         url += '?access_token' + @access_token.token()
+      end
+      
+      File.open(save_path, "w") do |f|
+        IO.copy_stream(open(url), f)
       end
       
     end

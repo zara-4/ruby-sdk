@@ -29,8 +29,8 @@ module Zara4::API
     # @param image_processing_request The request to be processed
     #
     def process_image(image_processing_request)
-      url = Zara4::API::Communication::Util::url('/api/image-processing/optimise')
-     
+      url = Zara4::API::Communication::Util::url('/v1/image-processing/request')
+          
       parameters = image_processing_request.generate_form_data
       parameters['access_token'] = @access_token.token
       

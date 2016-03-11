@@ -3,8 +3,8 @@ module Zara4::API::Communication
     
     USER_AGENT = 'Zara 4 RUBY-SDK, Version-' + Zara4::API::VERSION
     
-    PRODUCTION_API_ENDPOINT = 'https://zara4.com'
-    DEVELOPMENT_API_ENDPOINT = 'http://zara4.dev'
+    PRODUCTION_API_ENDPOINT = 'https://api.zara4.com'
+    DEVELOPMENT_API_ENDPOINT = 'http://api.zara4.dev'
     
     @@BASE_URL = PRODUCTION_API_ENDPOINT
     
@@ -13,7 +13,7 @@ module Zara4::API::Communication
     # Get the base url of the API endpoint.
     #
     def self.api_endpoint_url
-      return @@BASE_URL + '/api'
+      return @@BASE_URL
     end
     
     

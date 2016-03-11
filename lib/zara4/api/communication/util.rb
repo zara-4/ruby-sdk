@@ -1,14 +1,12 @@
 module Zara4::API::Communication
   class Util
-    
-    BASE_URL = 'https://zara4.com'
-    
+      
     
     #
     # Get the url to the given path.
     #
     def self.url(path)
-      return BASE_URL + path
+      return Zara4::API::Communication::Config::api_endpoint_url() + path
     end
     
     

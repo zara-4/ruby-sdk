@@ -3,3 +3,5 @@
 .DS_Store
 *~
 *.gem
+test/local.jpg
+test/remote.jpg

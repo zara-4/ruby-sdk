@@ -11,7 +11,7 @@ module Zara4::API::ImageProcessing
       if optimisation_mode != nil
         @optimisation_mode = optimisation_mode
       else
-        @optimisation_mode = Zara4::API::ImageProcessing::OptimisationMode::COMPROMISE 
+        @optimisation_mode = Zara4::API::ImageProcessing::OptimisationMode::COMPROMISE
       end
       
       if output_format != nil

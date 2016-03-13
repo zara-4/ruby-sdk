@@ -12,6 +12,14 @@ client = Zara4::API::Client.new({
 # Test RemoteImageRequest
 #
 original_image = Zara4::API::ImageProcessing::RemoteImageRequest.new('https://zara4.com/img/comparison/beach/original.jpg')
+
+original_image.optimisation_mode  = Zara4::API::ImageProcessing::OptimisationMode::HIGHEST
+original_image.output_format      = Zara4::API::ImageProcessing::OutputFormat::MATCH
+original_image.colour_enhancement = Zara4::API::ImageProcessing::ColourEnhancement::IMPROVE_COLOUR
+original_image.resize_mode        = Zara4::API::ImageProcessing::ResizeMode::CROP
+original_image.width              = 250
+original_image.height             = 250
+
 processed_image = client.process_image(original_image)
 client.download_processed_image(processed_image, 'test/remote.jpg')
 

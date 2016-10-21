@@ -1,5 +1,5 @@
 module Zara4::API
-  VERSION = '1.0.0'
+  VERSION = '1.0.1'
 end
 
 require_relative './api/client.rb'

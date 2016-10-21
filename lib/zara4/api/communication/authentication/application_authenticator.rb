@@ -6,6 +6,7 @@ module Zara4::API::Communication::Authentication
     # Acquire an AccessToken using this ApplicationAuthenticator.
     #
     def acquire_access_token
+
       grant = Zara4::API::Communication::Grant::ClientCredentialsGrantRequest.new(@client_id, @client_secret, @scopes)
       tokens = grant.get_tokens()
       

@@ -33,16 +33,10 @@ module Zara4::API
       url = Zara4::API::Communication::Util::url('/v1/image-processing/request')
           
       parameters = image_processing_request.generate_form_data
-      
-      headers = {
-        'access_token'  => @access_token.token
-      }     
-      
-      print parameters
+      parameters['access_token'] = @access_token.token
       
       response = self.class.post(url, {
         query: parameters,
-        headers: headers,
         detect_mime_type: true
       })
             
@@ -73,8 +67,9 @@ module Zara4::API
       url = processed_image.file_urls[0]
       
       if @access_token
-        url += '?access_token' + @access_token.token()
+        url += '?access_token=' + @access_token.token
       end
+
       
       File.open(save_path, "w") do |f|
         IO.copy_stream(open(url), f)
